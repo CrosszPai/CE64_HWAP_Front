@@ -1,5 +1,6 @@
 import preprocess from 'svelte-preprocess';
 import node from '@sveltejs/adapter-node';
+import path from 'path'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -20,6 +21,15 @@ const config = {
 				hmr: {
 					port: 3333
 				}
+			},
+			resolve: {
+				dedupe: ['svelte', 'urql'],
+				alias: {
+					$graphql: path.resolve('./src/graphql')
+				}
+			},
+			optimizeDeps: {
+				exclude: ['@urql/svelte']
 			}
 		}
 	}
