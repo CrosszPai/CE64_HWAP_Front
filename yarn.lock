@@ -647,6 +647,11 @@ csso@^4.2.0:
   dependencies:
     css-tree "^1.1.2"
 
+daisyui@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-1.11.0.tgz#28d918b26466c49a809b2e4aabeafdfb11d2a354"
+  integrity sha512-0A8QEOd8fn597InQ633hFGKnHFUx7jpFB0plR7HnjIXDgeFSuMnjkoqTJtSngxtMlnVnRGInKPzupCKXDDrL6A==
+
 debug@^4.0.1, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
