@@ -70,6 +70,6 @@
 </script>
 
 <Navbar />
-<div class="p-2">
+<div class="p-2 container">
 	<slot />
 </div>
