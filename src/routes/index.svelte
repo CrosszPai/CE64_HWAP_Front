@@ -41,7 +41,7 @@
 					</dt>
 					<dd class="mt-2 ml-16 text-base text-gray-500">
 						นักเรียนไม่ต้องมี microcontroller / development board ในการทำแล็ป ช่วยลดภาระในการทำแล็ป
-						focus เฉพาะการเขียน application ให้ทำงานไม่ถูกต้อง
+						focus เฉพาะการเขียน application ให้ทำงานได้ถูกต้อง
 					</dd>
 				</div>
 
