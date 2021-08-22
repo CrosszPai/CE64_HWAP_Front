@@ -1,21 +1,14 @@
-<svelte:head>
-	<meta name="description" content="Beryl Hardware Labolatory platform" />
-</svelte:head>
-<div class="py-12 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="lg:text-center">
-			<h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Feature</h2>
-			<p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-				ห้องแล็ปสำหรับวิชา microcontroller
-			</p>
-			<p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-				แพลตฟอร์มที่จะช่วยในการตรวจสอบแล็ปและรายงานผลโดยอัตโนมัติ
-			</p>
-		</div>
-
-		<div class="mt-10">
-			<dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-				<div class="relative">
+<div class="hero min-h-screen bg-base-200">
+	<div class="flex-col hero-content lg:flex-row-reverse">
+		<img
+			src="https://predictabledesigns.com/wp-content/uploads/2019/06/a-circuit-board-description-automatically-generat.jpeg"
+			class="max-w-sm rounded-lg shadow-2xl"
+		/>
+		<div>
+			<h1 class="mb-5 text-5xl font-bold text-indigo-600">ห้องแล็ปสำหรับวิชา microcontroller</h1>
+			<h2 class="mb-5 text-3xl">แพลตฟอร์มที่จะช่วยในการตรวจสอบแล็ปและรายงานผลโดยอัตโนมัติ</h2>
+			<div class="card lg:card-side bordered">
+				<div class="card-body">
 					<dt>
 						<button
 							class="absolute btn btn-primary flex items-center justify-center h-12 w-12 p-0  text-white"
@@ -37,15 +30,16 @@
 								/>
 							</svg>
 						</button>
-						<p class="ml-16 text-lg leading-6 font-medium text-gray-900">No Hardware Require</p>
+						<p class="ml-16 text-lg leading-6 font-medium">No Hardware Require</p>
 					</dt>
 					<dd class="mt-2 ml-16 text-base text-gray-500">
 						นักเรียนไม่ต้องมี microcontroller / development board ในการทำแล็ป ช่วยลดภาระในการทำแล็ป
 						focus เฉพาะการเขียน application ให้ทำงานได้ถูกต้อง
 					</dd>
 				</div>
-
-				<div class="relative">
+			</div>
+			<div class="card lg:card-side bordered">
+				<div class="card-body">
 					<dt>
 						<button
 							class="absolute btn btn-primary flex items-center justify-center h-12 w-12 p-0  text-white"
@@ -67,13 +61,14 @@
 								/>
 							</svg>
 						</button>
-						<p class="ml-16 text-lg leading-6 font-medium text-gray-900">Less human interactive</p>
+						<p class="ml-16 text-lg leading-6 font-medium">Less human interactive</p>
 					</dt>
 					<dd class="mt-2 ml-16 text-base text-gray-500">
 						แพลตฟอร์มรองรับการทดสอบและออกรายงานโดยอัตโนมัติ ลดการใช้แรงงานในการตรวจสอบโดยใช้มนุษย์
 					</dd>
 				</div>
-			</dl>
+			</div>
+			<button class="btn btn-primary align-middle">Sign In With GitHub</button>
 		</div>
 	</div>
 </div>
