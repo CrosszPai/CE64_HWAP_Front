@@ -1,4 +1,4 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen w-screen bg-base-200">
 	<div class="flex-col hero-content lg:flex-row-reverse">
 		<img
 			src="https://predictabledesigns.com/wp-content/uploads/2019/06/a-circuit-board-description-automatically-generat.jpeg"
@@ -68,7 +68,6 @@
 					</dd>
 				</div>
 			</div>
-			<button class="btn btn-primary align-middle">Sign In With GitHub</button>
 		</div>
 	</div>
 </div>
