@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { session } from '$app/stores';
+import { GITHUB_CLIENT_ID } from '$lib/Env';
+
 	function themeChangeHandler(e: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const html = document.getElementsByTagName('html').item(0);
 		html.setAttribute('data-theme', e.currentTarget.value);
@@ -31,7 +34,10 @@
 		<option>light</option>
 		<option>dark</option>
 	</select>
-	<button class="btn btn-primary align-middle mx-3">Sign In With GitHub</button>
+	<pre>
+		{JSON.stringify($session)}
+	</pre>
+	<a href={`https://github.com/apps/ce64-13/installations/new`} class="btn btn-primary align-middle mx-3">Sign In With GitHub</a>
 	<div class="flex-none">
 		<button class="btn btn-square btn-ghost">
 			<svg

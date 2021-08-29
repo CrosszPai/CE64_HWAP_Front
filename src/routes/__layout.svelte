@@ -7,11 +7,17 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ fetch, context }) {
+	export async function load({ fetch, context, session }) {
+		console.log(session,'s');
 		const client = await createClient({
-			url: 'https://api.spacex.land/graphql/',
+			url: 'http://0.0.0.0:3001/graphql',
 			fetch,
-			dev: browser && dev
+			dev: browser && dev,
+			fetchOptions: {
+				headers: {
+					'set-cookie': `access_token=${session.token.access_token}`
+				}
+			}
 		});
 		return {
 			context: {

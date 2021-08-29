@@ -1,25 +1,5 @@
-<script lang="ts" context="module">
-	import type { Load } from '@sveltejs/kit';
-	import type { Client } from '@urql/core';
-	import { TEST_SPACE_X } from '$graphql/query/spaceX';
-	export const load: Load<{
-		context: Client;
-	}> = async ({ context }) => {
-		return {
-			props: {
-				result: await context.query(TEST_SPACE_X)
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
 	import { operationStore, query } from '@urql/svelte';
-	import type { OperationStore } from '@urql/svelte';
-	export let result: OperationStore;
-	$: {
-		console.log(result);
-	}
 	let value = `{
   launchesPast(limit: 1) {
     mission_name

@@ -29,7 +29,7 @@ const config = {
 				}
 			},
 			optimizeDeps: {
-				exclude: ['@urql/svelte']
+				exclude: ['@urql/svelte','cookie']
 			}
 		}
 	}
