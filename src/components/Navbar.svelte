@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { session } from '$app/stores';
-import { GITHUB_CLIENT_ID } from '$lib/Env';
+	import { GITHUB_CLIENT_ID } from '$lib/Env';
+	import type { GithubUser } from 'src/global';
+	import SignInWithGithubButton from './Buttons/SignInWithGithubButton.svelte';
 
 	function themeChangeHandler(e: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const html = document.getElementsByTagName('html').item(0);
 		html.setAttribute('data-theme', e.currentTarget.value);
 	}
+	$: user = $session.user as GithubUser | null;
 </script>
 
 <div class="navbar mb-2 shadow-lg rounded-box">
 	<div class="flex-none">
-		<button class="btn btn-square btn-ghost">
+		<button class="btn btn-square btn-ghost md:hidden">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -27,32 +30,21 @@ import { GITHUB_CLIENT_ID } from '$lib/Env';
 		</button>
 	</div>
 	<div class="flex-1 px-2 mx-2">
-		<span class="text-lg font-bold"> With two icons </span>
+		<span class="text-lg font-bold">HW Automation</span>
 	</div>
-	<select on:change={themeChangeHandler} class="select select-bordered">
+	<!-- <select on:change={themeChangeHandler} class="select select-bordered">
 		<option disabled selected>Choose your theme</option>
 		<option>light</option>
 		<option>dark</option>
-	</select>
-	<pre>
-		{JSON.stringify($session)}
-	</pre>
-	<a href={`https://github.com/apps/ce64-13/installations/new`} class="btn btn-primary align-middle mx-3">Sign In With GitHub</a>
-	<div class="flex-none">
-		<button class="btn btn-square btn-ghost">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				class="inline-block w-6 h-6 stroke-current"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-				/>
-			</svg>
-		</button>
-	</div>
+	</select> -->
+
+	{#if user.id}
+		<div class="avatar cursor-pointer active:hover:scale-95">
+			<div class="w-10 h-10 rounded-full">
+				<img src={user.avatar_url} alt="user avatar" />
+			</div>
+		</div>
+	{:else}
+		<SignInWithGithubButton />
+	{/if}
 </div>

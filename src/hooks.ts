@@ -1,11 +1,13 @@
 import type { GetSession, Handle } from '@sveltejs/kit';
 import { GithubAuthentication, TokenResponse } from './api/authentication';
 import cookie from 'cookie';
+import type { GithubUser } from './global';
 
 export const getSession: GetSession = async (request) => {
 	const cookieToken = cookie.parse(request.headers.cookie ?? '');
 
 	let token: TokenResponse = {};
+	let user: GithubUser | null = request.locals.user;
 
 	if (cookieToken.refresh_token?.length !== 0) {
 		try {
@@ -17,17 +19,22 @@ export const getSession: GetSession = async (request) => {
 	}
 
 	if (token.access_token) {
-		return { token };
+		user = await GithubAuthentication.getBasicUserProfile(token.access_token);
+		request.locals.user = user;
+		return { token, user };
 	}
 
 	try {
 		token = await GithubAuthentication.signInByCode(request.query);
+		user = await GithubAuthentication.getBasicUserProfile(token.access_token);
+		request.locals.user = user;
 		request.locals.token = token;
 	} catch (error) {
 		console.log(error);
 	}
 	return {
-		token
+		token,
+		user
 	};
 };
 

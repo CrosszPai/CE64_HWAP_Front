@@ -1,4 +1,5 @@
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$lib/Env';
+import type { GithubUser } from 'src/global';
 
 export type TokenResponse = {
 	access_token?: string;
@@ -36,6 +37,15 @@ export const GithubAuthentication = {
 				}
 			}
 		);
+		return await response.json();
+	},
+	async getBasicUserProfile(access_token: string): Promise<GithubUser> {
+		const response = await fetch('https://api.github.com/user', {
+			headers: {
+				Accept: 'application/json',
+				Authorization: `token ${access_token}`
+			}
+		});
 		return await response.json();
 	}
 };
