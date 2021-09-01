@@ -1,12 +1,11 @@
-<script context="module">
+<script context="module" lang="ts">
 	import { get, readable } from 'svelte/store';
 	import { Client, operationStore } from '@urql/svelte';
 	import { browser, dev } from '$app/env';
 	import { createClient } from '$lib/graphql';
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ fetch, context, session }) {
+	import type { Load } from '@sveltejs/kit';
+
+	export const load: Load = async ({ fetch, context, session }) => {
 		const client = await createClient({
 			// Pass in the fetch from sveltekit to have access to serialized requests during hydration
 			url: 'http://0.0.0.0:3001/graphql',
@@ -52,7 +51,7 @@
 			},
 			props: { client }
 		};
-	}
+	};
 </script>
 
 <script lang="ts">

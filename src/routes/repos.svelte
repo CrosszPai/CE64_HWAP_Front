@@ -6,7 +6,6 @@
 	export const load: Load<{
 		context: Client;
 	}> = async ({ context }) => {
-
 		return {
 			props: {
 				result: await context.query(REPOS)

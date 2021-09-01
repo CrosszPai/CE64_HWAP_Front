@@ -1,12 +1,12 @@
-version: "3.9"  # optional since v1.27.0
+version: '3.9' # optional since v1.27.0
 services:
   web:
-    build: 
+    build:
       context: .
       dockerfile: dev.Dockerfile
     ports:
-      - "3000:3000" # dev server port
-      - "3333:3333" # hmr port
+      - '3000:3000' # dev server port
+      - '3333:3333' # hmr port
     volumes:
       - .:/app
       - /app/node_modules

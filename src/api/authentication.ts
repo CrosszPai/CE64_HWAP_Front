@@ -11,7 +11,7 @@ export type TokenResponse = {
 };
 
 export const GithubAuthentication = {
-	async signInByCode(query: URLSearchParams): Promise<TokenResponse | Object> {
+	async signInByCode(query: URLSearchParams): Promise<TokenResponse | Record<string, unknown>> {
 		const code = query.get('code');
 		if (!code) {
 			return {};
