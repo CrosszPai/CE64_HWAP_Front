@@ -37,7 +37,7 @@
 		<option>dark</option>
 	</select> -->
 
-	{#if user.id}
+	{#if user?.id}
 		<div class="avatar cursor-pointer active:hover:scale-95">
 			<div class="w-10 h-10 rounded-full">
 				<img src={user.avatar_url} alt="user avatar" />
