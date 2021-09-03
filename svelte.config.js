@@ -1,6 +1,6 @@
 import preprocess from 'svelte-preprocess';
 import node from '@sveltejs/adapter-node';
-import path from 'path'
+import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -29,7 +29,20 @@ const config = {
 				}
 			},
 			optimizeDeps: {
-				exclude: ['@urql/svelte']
+				exclude: ['cookie'],
+				include: ['graphql']
+			},
+			ssr: {
+				// Until https://github.com/vitejs/vite/issues/2579
+				noExternal: [
+					'@urql/exchange-request-policy',
+					'@urql/svelte',
+					'add',
+					'daisyui',
+					'graphql',
+					'urql',
+					'yarn'
+				]
 			}
 		}
 	}

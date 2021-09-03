@@ -1,17 +1,21 @@
-<script context="module">
+<script context="module" lang="ts">
 	import { get, readable } from 'svelte/store';
 	import { Client, operationStore } from '@urql/svelte';
 	import { browser, dev } from '$app/env';
-	import { createClient } from '$lib/graphql/client';
+	import { createClient } from '$lib/graphql';
+	import type { Load } from '@sveltejs/kit';
 
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ fetch, context }) {
+	export const load: Load = async ({ fetch, context, session }) => {
 		const client = await createClient({
-			url: 'https://api.spacex.land/graphql/',
+			// Pass in the fetch from sveltekit to have access to serialized requests during hydration
+			url: 'http://0.0.0.0:3001/graphql',
 			fetch,
-			dev: browser && dev
+			dev: browser && dev,
+			fetchOptions: {
+				headers: {
+					'set-cookie': `access_token=${session.token.access_token}`
+				}
+			}
 		});
 		return {
 			context: {
@@ -19,21 +23,14 @@
 				client,
 				// Works just like query from @urql/svelte
 				query: async (query, variables, context, normalize) => {
-					if (typeof variables == 'function') {
-						[normalize, variables = undefined, context = undefined] = [variables];
-					} else if (typeof context == 'function') {
-						[normalize, context = undefined] = [context];
-					}
-
 					const store = operationStore(query, variables, context);
 					const result = await client
 						.query(store.query, store.variables, store.context)
 						.toPromise();
 					Object.assign(get(store), result);
-
+					// Allow to access deep nested object directly at data
 					if (normalize) {
 						const { subscribe } = store;
-
 						return Object.create(store, {
 							subscribe: {
 								enumerable: true,
@@ -44,19 +41,17 @@
 										}
 										set(result);
 									});
-
 									return unsubscribe;
 								}).subscribe
 							}
 						});
 					}
-
 					return store;
 				}
 			},
 			props: { client }
 		};
-	}
+	};
 </script>
 
 <script lang="ts">
