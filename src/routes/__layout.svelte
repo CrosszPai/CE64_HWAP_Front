@@ -65,6 +65,6 @@
 </script>
 
 <Navbar />
-<div class="p-2 container">
+<div class="p-2 container mx-auto">
 	<slot />
 </div>
