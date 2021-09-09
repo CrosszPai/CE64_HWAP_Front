@@ -8,7 +8,7 @@
 	export const load: Load = async ({ fetch, context, session }) => {
 		const client = await createClient({
 			// Pass in the fetch from sveltekit to have access to serialized requests during hydration
-			url: 'http://0.0.0.0:3001/graphql',
+			url: 'http://localhost:3001/graphql',
 			fetch,
 			dev: browser && dev,
 			fetchOptions: {
@@ -65,6 +65,6 @@
 </script>
 
 <Navbar />
-<div class="p-2 container">
+<div class="p-2 container mx-auto">
 	<slot />
 </div>
