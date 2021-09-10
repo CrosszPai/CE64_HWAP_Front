@@ -1,10 +1,10 @@
 <div class="text-center w-full">
-	<div class="p-10 card bg-base-200">
+	<div class="p-10 card bg-base-200 h-1/2">
 		<div class="form-control mb-5 mt-5">
-			<label class="label text-4xl">
+			<label class="label text-4xl mb-5">
 				<span class="label-text text-4xl">Lab 1 : Lab Name</span>
 			</label>
-			<textarea class="textarea h-24 mt-5" placeholder="details" />
+			<textarea class="textarea h-2/4 mt-5" placeholder="details" />
 		</div>
 		<button class="btn btn-primary btn-active self-end btn" role="button" aria-pressed="true"
 			>Submit</button
