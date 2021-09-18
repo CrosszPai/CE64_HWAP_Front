@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { browser } from '$app/env';
+
+	import { goto } from '$app/navigation';
+
 	import { session } from '$app/stores';
 	import type { GithubUser } from 'src/global';
 	import SignInWithGithubButton from './Buttons/SignInWithGithubButton.svelte';
@@ -8,6 +12,12 @@
 	// 	html.setAttribute('data-theme', e.currentTarget.value);
 	// }
 	$: user = $session.user as GithubUser | null;
+	$: {
+		if (!!user.id && browser) {
+			console.log(user.id);
+			// goto('/');
+		}
+	}
 </script>
 
 <div class="navbar mb-2 shadow-lg rounded-box">
