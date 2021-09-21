@@ -13,7 +13,7 @@
 {:else if $lab.data?.lab}
 	<div class="card lg:card-side bordered shadow-lg">
 		<div class="card-body">
-			<h2 class="card-title text-4xl mt-5">{lab.data.lab.lab_name}</h2>
+			<h2 class="card-title text-4xl mt-5 text-purple-600">{lab.data.lab.lab_name}</h2>
 			<p class="ml-10 mt-5">{lab.data.lab.lab_detail}</p>
 		</div>
 	</div>
