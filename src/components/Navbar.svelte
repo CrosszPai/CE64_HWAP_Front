@@ -3,10 +3,6 @@
 	import type { GithubUser } from 'src/global';
 	import SignInWithGithubButton from './Buttons/SignInWithGithubButton.svelte';
 
-	// function themeChangeHandler(e: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
-	// 	const html = document.getElementsByTagName('html').item(0);
-	// 	html.setAttribute('data-theme', e.currentTarget.value);
-	// }
 	$: user = $session.user as GithubUser | null;
 </script>
 
