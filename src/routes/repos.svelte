@@ -15,6 +15,9 @@
 </script>
 
 <script>
+	import { session } from '$app/stores';
+
 	export let result;
 	console.log(result);
+	console.log($session.user);
 </script>

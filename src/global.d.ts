@@ -34,3 +34,9 @@ export interface GithubUser {
 	created_at: Date;
 	updated_at: Date;
 }
+
+export interface lab {
+	id: number;
+	lab_name: string;
+	lab_detail?: string;
+}
