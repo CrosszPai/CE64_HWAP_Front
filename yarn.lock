@@ -2169,6 +2169,13 @@
     esbuild "^0.12.5"
     tiny-glob "^0.2.9"
 
+"@sveltejs/adapter-vercel@^1.0.0-next.29":
+  version "1.0.0-next.29"
+  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.29.tgz#8b1bdf831f78eb2ea0b94b0f5d7fef0461b9a42f"
+  integrity sha512-2DMz4qCm5+v+/8npdbyT/uQVMr3elSOH5ZJ24k3VLug60n6/sS4RyU++RO8gjiVQqxyGvdfRFJXAX6xV4K6hzg==
+  dependencies:
+    esbuild "^0.12.5"
+
 "@sveltejs/kit@next":
   version "1.0.0-next.142"
   resolved "https://registry.npmjs.org/@sveltejs/kit/-/kit-1.0.0-next.142.tgz"
