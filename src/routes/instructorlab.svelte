@@ -22,8 +22,11 @@
 		<form class="form-control mb-5 mt-5" on:submit|preventDefault={submit_lab}>
 			<textarea class="textarea h-2/4 mt-5" placeholder="lab name" bind:value={lab_name} />
 			<textarea class="textarea h-2/4 mt-5" placeholder="details" bind:value={lab_detail} />
-			<button class="btn btn-primary btn-active self-end btn mt-5" role="button" aria-pressed="true"
-				>Submit</button
+			<button
+				aria-label="submit-lab"
+				class="btn btn-primary btn-active self-end btn mt-5"
+				role="button"
+				aria-pressed="true">Submit</button
 			>
 		</form>
 	</div>

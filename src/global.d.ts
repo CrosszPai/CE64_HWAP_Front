@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-export interface GithubUser {
+export declare interface GithubUser {
 	login: string;
 	id: number;
 	node_id: string;
@@ -35,8 +35,35 @@ export interface GithubUser {
 	updated_at: Date;
 }
 
-export interface lab {
+export declare interface lab {
 	id: number;
 	lab_name: string;
 	lab_detail?: string;
+}
+
+export declare class Repo {
+	readonly id?: number;
+	name?: string;
+}
+
+export declare enum Role {
+	instructor = "instructor",
+	student = "student",
+	admin = "admin"
+}
+export declare class User {
+	id?: number;
+	email?: string;
+	name?: string;
+	entered_at?: Date;
+	role?: Role;
+	labs?: Lab[];
+	avatar_url?: string
+}
+
+export declare class Hardware {
+    id?: string;
+    createdAt?: string;
+    status?: string;
+    working_id?: string;
 }

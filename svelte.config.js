@@ -25,23 +25,25 @@ const config = {
 			resolve: {
 				dedupe: ['svelte', 'urql'],
 				alias: {
-					$graphql: path.resolve('./src/graphql')
+					$graphql: path.resolve('./src/graphql'),
+					$components: path.resolve('./src/components')
 				}
 			},
 			optimizeDeps: {
-				exclude: ['cookie'],
+				exclude: ['cookie', 'dayjs', '@urql/svelte'],
 				include: ['graphql']
 			},
 			ssr: {
 				// Until https://github.com/vitejs/vite/issues/2579
 				noExternal: [
 					'@urql/exchange-request-policy',
-					'@urql/svelte',
 					'add',
 					'daisyui',
 					'graphql',
 					'urql',
-					'yarn'
+					'yarn',
+					'dayjs',
+					...(process.env.NODE_ENV === 'production' ? ['@urql/svelte'] : [])
 				]
 			}
 		}
