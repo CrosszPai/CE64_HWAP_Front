@@ -4,11 +4,12 @@
 	import { browser, dev } from '$app/env';
 	import { createClient } from '$lib/graphql';
 	import type { Load } from '@sveltejs/kit';
+	import { GRAPHQL_ENDPOINT } from '$lib/Env';
 
-	export const load: Load = async ({ fetch, context, session }) => {
+	export const load: Load = async ({ fetch, stuff, session }) => {
 		const client = await createClient({
 			// Pass in the fetch from sveltekit to have access to serialized requests during hydration
-			url: 'http://localhost:3001/graphql',
+			url: GRAPHQL_ENDPOINT,
 			fetch,
 			dev: browser && dev,
 			fetchOptions: {
@@ -18,8 +19,8 @@
 			}
 		});
 		return {
-			context: {
-				...context,
+			stuff: {
+				...stuff,
 				client,
 				// Works just like query from @urql/svelte
 				query: async (query, variables, context, normalize) => {

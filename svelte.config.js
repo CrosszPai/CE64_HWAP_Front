@@ -17,11 +17,6 @@ const config = {
 		target: '#svelte',
 		adapter: vercel(),
 		vite: {
-			server: {
-				hmr: {
-					port: 3333
-				}
-			},
 			resolve: {
 				dedupe: ['svelte', 'urql'],
 				alias: {

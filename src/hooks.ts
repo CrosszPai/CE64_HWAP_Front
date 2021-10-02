@@ -4,6 +4,7 @@ import cookie from 'cookie';
 import type { GithubUser } from './global';
 import dayjs from 'dayjs/esm';
 import { USER } from '$graphql/query/user.gql';
+import { GRAPHQL_ENDPOINT } from '$lib/Env';
 
 
 export const getSession: GetSession = async (request) => {
@@ -27,7 +28,7 @@ export const getSession: GetSession = async (request) => {
 		const headers = new Headers()
 		headers.append('authorization', token.access_token)
 		headers.append('Content-Type', 'application/json')
-		const res = await fetch('http://localhost:3001/graphql', {
+		const res = await fetch(GRAPHQL_ENDPOINT, {
 			method: 'POST',
 			headers: headers,
 			body: JSON.stringify({
