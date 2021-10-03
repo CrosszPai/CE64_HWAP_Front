@@ -2,7 +2,7 @@
 	<div class="flex-col hero-content lg:flex-row-reverse">
 		<img
 			alt="cover"
-			src="https://predictabledesigns.com/wp-content/uploads/2019/06/a-circuit-board-description-automatically-generat.jpeg"
+			src="/cover.webp"
 			class="max-w-sm rounded-lg shadow-2xl"
 			width="384"
 			height="256"
