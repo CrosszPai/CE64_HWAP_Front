@@ -36,7 +36,6 @@ export const getSession: GetSession = async (request) => {
 			})
 		})
 		const data = await res.json()
-		console.log(data);
 		request.locals.user = data.data.user;
 
 
