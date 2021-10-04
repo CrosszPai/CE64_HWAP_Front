@@ -1,7 +1,7 @@
 <div class="card lg:card-side bordered shadow-lg mt-5">
 	<figure>
 		<img
-			src="https://s.pngkit.com/png/small/11-116810_man-finance-online-svg-person-icon-woman-png.png"
+			src="https://i.stack.imgur.com/UM6Nt.png"
 		/>
 	</figure>
 	<div class="card-body mt-3">
