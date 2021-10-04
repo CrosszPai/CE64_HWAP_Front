@@ -23,16 +23,16 @@
 		<p class="ml-10 mt-5">lab details</p>
 	</div>
 </div>
-<div class="card-body flex flex-col shadow-lg ">
+<div class="card-body flex flex-col shadow-lg w-1/2 center">
 	<div class="flex flex-col">
-		<div class="justify-items-start">
-			<input type="checkbox" checked="checked" class="checkbox" /> test case 1
+		<div class="flex justify-items-start">
+			<input type="checkbox" checked="checked" class="checkbox mr-2" /> test case 1
 		</div>
-		<div class="justify-items-start">
-			<input type="checkbox" checked="checked" class="checkbox" /> test case 2
+		<div class="flex justify-items-start">
+			<input type="checkbox" checked="checked" class="checkbox mr-2" /> test case 2
 		</div>
-		<div class="justify-items-start">
-			<input type="checkbox" checked="checked" class="checkbox" /> test case 3
+		<div class="flex justify-items-start">
+			<input type="checkbox" checked="checked" class="checkbox mr-2" /> test case 3
 		</div>
 	</div>
 </div>
