@@ -12,7 +12,9 @@
 	<ul>
 		{#each labs.data.selfLabs as lab, i}
             <li>
-                {lab.id}: {lab.lab_name}
+                {lab.id}
+				{lab.lab_name}
+				{lab.lab_detail}
             </li>
         {/each}
 	</ul>
