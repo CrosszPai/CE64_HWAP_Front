@@ -3,14 +3,16 @@
 	import type { Client } from '@urql/core';
 	import { LAB } from '$graphql/query/labs.gql';
 	export const load: Load<{
-		context: Client;
-	}> = async ({ context, page }) => {
+		stuff: Client;
+	}> = async ({ stuff, page }) => {
 		console.log(page.params.id);
 		return {
 			props: {
-				lab: await context.query(LAB, {
-					id: parseFloat(page.params.id)
-				})
+				lab: await stuff
+					.query(LAB, {
+						id: parseFloat(page.params.id)
+					})
+					.toPromise()
 			}
 		};
 	};
