@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "dev:docker": "svelte-kit dev --host",
-    "build": "NODE_ENV=production svelte-kit build",
+    "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
