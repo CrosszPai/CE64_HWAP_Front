@@ -16,10 +16,10 @@
 				{lab.lab_name}
 				{lab.lab_detail}
             </li> -->
-			<div class="card shadow-lg">
+			<div class="card shadow-lg mt-5 mb-5">
 				<div class="card-body">
-				  <h2 class="card-title">{lab.lab_name}</h2> 
-				  <p>{lab.lab_detail}</p>
+				  <h2 class="card-title">Lab {lab.id} : {lab.lab_name}</h2> 
+				  <div>{lab.lab_detail}</div>
 				</div>
 			</div>
         {/each}
