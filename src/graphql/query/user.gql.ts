@@ -1,5 +1,5 @@
-import { gql } from '@urql/svelte';
-import type { TypedDocumentNode } from '@urql/core'
+import { gql } from '@urql/core';
+import type { TypedDocumentNode } from '@urql/core';
 import type { User } from 'src/global';
 
 export const USER: TypedDocumentNode<{ user: User }> = gql`
@@ -14,8 +14,8 @@ export const USER: TypedDocumentNode<{ user: User }> = gql`
 	}
 `;
 
-export const USERS: TypedDocumentNode<{ users: Array<User> }> = gql`
-	query users{
+export const USERS: TypedDocumentNode<{ users: User[] }> = gql`
+	query users {
 		users {
 			id
 			name
@@ -24,4 +24,4 @@ export const USERS: TypedDocumentNode<{ users: Array<User> }> = gql`
             avatar_url
 		}
 	}
-`
+`;

@@ -1,5 +1,5 @@
-import { gql } from '@urql/svelte';
-import type { TypedDocumentNode } from '@urql/core'
+import { gql } from '@urql/core';
+import type { TypedDocumentNode } from '@urql/core';
 import type { Hardware } from 'src/global';
 
 export const HARDWARES: TypedDocumentNode<{ hardwares: Hardware[] }> = gql`
