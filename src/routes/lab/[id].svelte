@@ -5,7 +5,6 @@
 	export const load: Load<{
 		stuff: Client;
 	}> = async ({ stuff, page }) => {
-		console.log(page.params.id);
 		return {
 			props: {
 				lab: await stuff
@@ -21,7 +20,6 @@
 <script lang="ts">
 	import type { lab } from 'src/global';
 	export let lab;
-	console.log(lab.data);
 </script>
 
 {#if lab.data}
