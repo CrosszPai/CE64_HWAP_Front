@@ -49,7 +49,7 @@
 			{/each}
 		</tbody>
 	</table>
-	<div class="mt-auto md:mt-2 btn-group md:ml-auto mx-auto">
+	<div class="mt-auto md:mt-2 btn-group md:ml-auto md:mr-0 mx-auto">
 		<button class="btn">Previous</button>
 		<button class="btn">1</button>
 		<button class="btn btn-active">2</button>
