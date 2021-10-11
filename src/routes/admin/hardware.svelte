@@ -2,6 +2,7 @@
 	import { HARDWARES } from '$graphql/query/hardware.gql';
 
 	import { operationStore, query } from '@urql/svelte';
+	import CreateHardwareModal from '$components/Admin/Hardware/CreateHardwareModal.svelte';
 
 	const hardwareQuery = operationStore(HARDWARES);
 	query(hardwareQuery);
@@ -12,6 +13,7 @@
 	<div class="btn btn-ghost loading" class:hidden={!$hardwareQuery.fetching}>
 		<span class="hidden md:block">fetching</span>
 	</div>
+	<CreateHardwareModal />
 	<form class="ml-auto form-control w-full md:w-[300px] relative">
 		<input name="search" type="text" placeholder="search" class="input w-full" />
 		<button type="submit" class="absolute top-0 right-0 rounded-l-none btn btn-primary"
@@ -47,7 +49,7 @@
 				<tr>
 					<th>{id}</th>
 					<td>{status}</td>
-					<td>{working_id}</td>
+					<td>{working_id ?? "-"}</td>
 				</tr>
 			{/each}
 		</tbody>

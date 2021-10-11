@@ -8,6 +8,7 @@ export const HARDWARES: TypedDocumentNode<{ hardwares: Hardware[] }> = gql`
 			id
 			status
             working_id
+			created_at
 		}
 	}
 `;
