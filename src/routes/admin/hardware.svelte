@@ -2,7 +2,6 @@
 	import { HARDWARES } from '$graphql/query/hardware.gql';
 
 	import { operationStore, query } from '@urql/svelte';
-	import type { Hardware } from 'src/global';
 
 	const hardwareQuery = operationStore(HARDWARES);
 	query(hardwareQuery);
@@ -13,7 +12,6 @@
 	<table class="table w-full">
 		<thead>
 			<tr>
-				<th />
 				<th>ID</th>
 				<th>Status</th>
 				<th>Working Id</th>
