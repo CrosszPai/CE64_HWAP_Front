@@ -9,9 +9,11 @@
 </script>
 
 <div class="flex mb-2">
-	<div class="btn btn-ghost loading" class:hidden={!$usersQuery.fetching}>fetching</div>
-	<form class="ml-auto form-control w-full sm:w-[300px] relative">
-		<input name="search" type="text" placeholder="search" class="input w-full sm:w-[300px]" />
+	<div class="btn btn-ghost loading" class:hidden={!$usersQuery.fetching}>
+		<span class="hidden md:block">fetching</span>
+	</div>
+	<form class="ml-auto form-control w-full md:w-[300px] relative">
+		<input name="search" type="text" placeholder="search" class="input w-full" />
 		<button type="submit" class="absolute top-0 right-0 rounded-l-none btn btn-primary"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +32,7 @@
 		</button>
 	</form>
 </div>
+
 <div class="max-w-[calc(100vw-1rem)] overflow-x-auto flex flex-col h-full ">
 	<table class="table w-full">
 		<thead>
