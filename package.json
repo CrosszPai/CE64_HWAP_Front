@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "dev:docker": "svelte-kit dev --host",
-    "build": "NODE_ENV=production svelte-kit build",
+    "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
@@ -15,6 +15,7 @@
     "@babel/core": "^7.15.5",
     "@sveltejs/adapter-node": "^1.0.0-next.39",
     "@sveltejs/kit": "next",
+    "@types/nanoid": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "@urql/devtools": "^2.0.3",
@@ -48,6 +49,7 @@
     "daisyui": "^1.11.0",
     "dayjs": "^1.10.7",
     "graphql": "^15.5.1",
+    "nanoid": "^3.1.29",
     "urql": "^2.0.4",
     "yarn": "^1.22.11"
   }

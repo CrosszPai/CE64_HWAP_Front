@@ -9,7 +9,6 @@
 	let lab_name = '';
 	let lab_detail = '';
 	function submit_lab(e) {
-		console.log(lab_name, lab_detail);
 		create_lab({
 			lab_name,
 			lab_detail

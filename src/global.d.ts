@@ -1,5 +1,4 @@
 /// <reference types="@sveltejs/kit" />
-
 export declare interface GithubUser {
 	login: string;
 	id: number;
@@ -62,8 +61,8 @@ export declare class User {
 }
 
 export declare class Hardware {
-    id?: string;
-    createdAt?: string;
-    status?: string;
-    working_id?: string;
+	id?: string;
+	createdAt?: string;
+	status?: string;
+	working_id?: string;
 }

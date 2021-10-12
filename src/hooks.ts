@@ -22,8 +22,9 @@ export const getSession: GetSession = async (request) => {
 			console.log(error);
 		}
 	}
-
-	if (token.access_token) {
+	console.log(token)
+	if (token.access_token !== "undefined" && token.access_token) {
+		console.log(token.access_token, "==============", typeof token.access_token)
 		const gh_user = await GithubAuthentication.getBasicUserProfile(token.access_token);
 		const headers = new Headers()
 		headers.append('authorization', token.access_token)
@@ -36,7 +37,6 @@ export const getSession: GetSession = async (request) => {
 			})
 		})
 		const data = await res.json()
-		console.log(data);
 		request.locals.user = data.data.user;
 
 
