@@ -1,5 +1,5 @@
 import { gql } from '@urql/core';
-import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
+import type { TypedDocumentNode } from '@urql/core';
 import type { lab } from 'src/global';
 
 export const CREATE_LAB: TypedDocumentNode<

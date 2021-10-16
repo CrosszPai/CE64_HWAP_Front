@@ -1,4 +1,4 @@
-<div class="overflow-x-auto">
+<div class="max-w-[calc(100vw-1rem)] overflow-x-auto">
     <table class="table w-full">
       <thead>
         <tr>

@@ -1,4 +1,5 @@
-import { gql, TypedDocumentNode } from '@urql/svelte';
+import { gql } from '@urql/core';
+import type { TypedDocumentNode } from '@urql/core';
 import type { Hardware } from 'src/global';
 
 export const HARDWARES: TypedDocumentNode<{ hardwares: Hardware[] }> = gql`
@@ -7,6 +8,7 @@ export const HARDWARES: TypedDocumentNode<{ hardwares: Hardware[] }> = gql`
 			id
 			status
             working_id
+			created_at
 		}
 	}
 `;
