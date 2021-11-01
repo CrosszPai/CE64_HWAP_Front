@@ -1,11 +1,11 @@
 <script>
 	import { CREATE_LAB } from '$graphql/mutation/labs.gql';
 
-	import { mutation } from '@urql/svelte';
+	import { mutation, operationStore } from '@urql/svelte';
 
-	const create_lab = mutation({
-		query: CREATE_LAB
-	});
+	
+	const createLabStore = operationStore(CREATE_LAB)
+	const create_lab = mutation(createLabStore);
 	let lab_name = '';
 	let lab_detail = '';
 	function submit_lab(e) {
@@ -21,6 +21,9 @@
 		<form class="form-control mb-5 mt-5" on:submit|preventDefault={submit_lab}>
 			<textarea class="textarea h-2/4 mt-5" placeholder="lab name" bind:value={lab_name} />
 			<textarea class="textarea h-2/4 mt-5" placeholder="details" bind:value={lab_detail} />
+			{#if $createLabStore.error}
+			<p class="text-error" >{$createLabStore.error.toString()}</p>
+			{/if}
 			<button
 				aria-label="submit-lab"
 				class="btn btn-primary btn-active self-end btn mt-5"

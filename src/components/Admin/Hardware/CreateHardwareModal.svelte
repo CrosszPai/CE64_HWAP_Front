@@ -1,28 +1,29 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
 	import { ADD_HARDWARE } from '$graphql/mutation/hardware.gql';
 
 	import AppNanoid from '$lib/nanoid';
 	import { mutation, operationStore } from '@urql/svelte';
 
-	let id = '';;
+	let id = '';
+	let open = false;
+	let disabled = false;
 	const addHardwareStore = operationStore(ADD_HARDWARE);
 	const mutateHardware = mutation(addHardwareStore);
 	function handleRandom() {
 		id = AppNanoid();
 	}
 	async function handleSubmit() {
+		disabled = true;
 		await mutateHardware({
 			id
 		});
-        window.location.reload()
+		disabled = false;
+		open = false;
 	}
 </script>
 
-<label for="hardware-modal" class="btn btn-primary modal-button">open modal</label>
-<input type="checkbox" id="hardware-modal" class="modal-toggle" />
-<div class="modal">
+<button class="btn btn-primary modal-button" on:click={() => (open = true)}>Add Hardware</button>
+<div class="modal" class:modal-open={open}>
 	<div class="modal-box prose">
 		<h3>เพิ่ม Hardware เข้าระบบ</h3>
 		<div class="form-control">
@@ -44,8 +45,10 @@
 			</div>
 		</div>
 		<div class="modal-action">
-			<button on:click={handleSubmit} class="btn btn-primary">เพิ่ม</button>
-			<button class="btn">ยกเลิก</button>
+			<button disabled={disabled} on:click={handleSubmit} class="btn btn-primary"
+				>เพิ่ม</button
+			>
+			<button class="btn" on:click={() => (open = false)}>ยกเลิก</button>
 		</div>
 	</div>
 </div>
