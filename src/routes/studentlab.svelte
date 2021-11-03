@@ -8,13 +8,13 @@
 	});
 	let lab_name = '';
 	let lab_detail = '';
-	function submit_lab(e) {
-		console.log(lab_name, lab_detail);
-		create_lab({
-			lab_name,
-			lab_detail
-		});
-	}
+	// function submit_lab(e) {
+	// 	console.log(lab_name, lab_detail);
+	// 	create_lab({
+	// 		lab_name,
+	// 		lab_detail
+	// 	});
+	// }
 </script>
 
 <div class="card lg:card-side bordered shadow-lg flex">
@@ -26,13 +26,13 @@
 <div class="card-body flex flex-col shadow-lg w-1/2 center">
 	<div class="flex flex-col">
 		<div class="flex justify-items-start">
-			<input type="checkbox" checked="checked" class="checkbox mr-2" /> test case 1
+			<input type="checkbox" checked class="checkbox mr-2" /> test case 1
 		</div>
 		<div class="flex justify-items-start">
-			<input type="checkbox" checked="checked" class="checkbox mr-2" /> test case 2
+			<input type="checkbox" checked class="checkbox mr-2" /> test case 2
 		</div>
 		<div class="flex justify-items-start">
-			<input type="checkbox" checked="checked" class="checkbox mr-2" /> test case 3
+			<input type="checkbox" checked class="checkbox mr-2" /> test case 3
 		</div>
 	</div>
 </div>
