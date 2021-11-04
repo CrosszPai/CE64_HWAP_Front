@@ -19,13 +19,13 @@ export declare interface GithubUser {
 	type: string;
 	site_admin: boolean;
 	name: string;
-	company?: any;
+	company?: unknown;
 	blog: string;
-	location?: any;
-	email?: any;
-	hireable?: any;
-	bio?: any;
-	twitter_username?: any;
+	location?: unknown;
+	email?: unknown;
+	hireable?: unknown;
+	bio?: unknown;
+	twitter_username?: unknown;
 	public_repos: number;
 	public_gists: number;
 	followers: number;
@@ -38,17 +38,21 @@ export declare interface lab {
 	id: number;
 	lab_name: string;
 	lab_detail?: string;
+	assets: { url: string }[];
+	repo_url: string;
 }
 
 export declare class Repo {
 	readonly id?: number;
-	name?: string;
+	readonly name?: string;
+	readonly url?: string;
+	readonly html_url?: string;
 }
 
 export declare enum Role {
-	instructor = "instructor",
-	student = "student",
-	admin = "admin"
+	instructor = 'instructor',
+	student = 'student',
+	admin = 'admin'
 }
 export declare class User {
 	id?: number;
@@ -57,7 +61,7 @@ export declare class User {
 	entered_at?: Date;
 	role?: Role;
 	labs?: Lab[];
-	avatar_url?: string
+	avatar_url?: string;
 }
 
 export declare class Hardware {

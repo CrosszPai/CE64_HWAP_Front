@@ -1,15 +1,17 @@
+<script context="module">
+	export const prerender = true;
+</script>
+
 <div class="hero h-[min-content] bg-base-200">
 	<div class="flex-col hero-content lg:flex-row-reverse">
-		<img
-			alt="cover"
-			src="/cover.webp"
-			class="rounded-lg shadow-2xl"
-			width="384"
-			height="256"
-		/>
+		<img alt="cover" src="/cover.webp" class="rounded-lg shadow-2xl" width="384" height="256" />
 		<div>
-			<h1 class="mb-5 text-2xl md:text-5xl font-bold text-indigo-600">ห้องแล็ปสำหรับวิชา microcontroller</h1>
-			<h2 class="mb-5 text-lg md:text-3xl">แพลตฟอร์มที่จะช่วยในการตรวจสอบแล็ปและรายงานผลโดยอัตโนมัติ</h2>
+			<h1 class="mb-5 text-2xl md:text-5xl font-bold text-indigo-600">
+				ห้องแล็ปสำหรับวิชา microcontroller
+			</h1>
+			<h2 class="mb-5 text-lg md:text-3xl">
+				แพลตฟอร์มที่จะช่วยในการตรวจสอบแล็ปและรายงานผลโดยอัตโนมัติ
+			</h2>
 			<div class="card lg:card-side bordered">
 				<dl class="card-body">
 					<dt>

@@ -8,6 +8,8 @@ export const REPOS: TypedDocumentNode<{ repos: Repo[] }> = gql`
 		repos {
 			id
 			name
+			url
+			html_url
 		}
 	}
 `;

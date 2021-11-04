@@ -7,6 +7,7 @@ import {
 	fetchExchange
 } from '@urql/svelte';
 import { requestPolicyExchange } from '@urql/exchange-request-policy';
+import { multipartFetchExchange } from '@urql/exchange-multipart-fetch';
 
 export type { Client };
 
@@ -30,13 +31,15 @@ export async function createClient({
 			ttl: 3 * 60 * 1000
 		}),
 		cacheExchange,
-		fetchExchange
+		// fetchExchange,
+		multipartFetchExchange
 	];
 
 	if (dev) {
 		const { devtoolsExchange } = await import('@urql/devtools');
 		exchanges.unshift(devtoolsExchange);
 	}
+
 
 	return _createClient({ ...options, exchanges: exchanges.filter(Boolean) });
 }
