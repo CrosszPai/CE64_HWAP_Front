@@ -25,7 +25,7 @@ const config = {
 				}
 			},
 			optimizeDeps: {
-				exclude: ['cookie', 'dayjs', '@urql/svelte'],
+				exclude: ['cookie', 'dayjs', '@urql/svelte', 'github-buttons'],
 				include: ['graphql']
 			},
 			ssr: {
@@ -34,6 +34,7 @@ const config = {
 					'@urql/exchange-request-policy',
 					'add',
 					'daisyui',
+					'github-buttons',
 					'graphql',
 					'urql',
 					'yarn',

@@ -68,5 +68,14 @@ export declare class Hardware {
 	id?: string;
 	createdAt?: string;
 	status?: string;
-	working_id?: string;
+	working?: Working;
+}
+
+export declare class Working {
+	id?: string;
+	lab?: Lab;
+	repo_url?: string;
+	created_at?: string;
+	status?: string;
+	owner?: User;
 }

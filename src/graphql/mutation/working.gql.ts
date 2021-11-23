@@ -8,7 +8,9 @@ export const ADD_WORKING: TypedDocumentNode<
 > = gql`
 	mutation addWorking($lab: String!, $repo: String!) {
 		addWorking(lab: $lab, repo: $repo) {
-			lab
+			lab {
+				lab_name
+			}
 			repo_url
 			owner {
 				id
