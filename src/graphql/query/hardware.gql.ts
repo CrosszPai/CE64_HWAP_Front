@@ -7,7 +7,7 @@ export const HARDWARES: TypedDocumentNode<{ hardwares: Hardware[] }> = gql`
 		hardwares {
 			id
 			status
-            working_id
+			working
 			created_at
 		}
 	}

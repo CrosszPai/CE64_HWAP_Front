@@ -2,7 +2,6 @@
 	export const prerender = true;
 </script>
 
-
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
@@ -24,14 +23,24 @@
 	const repos = operationStore(REPOS);
 	query(repos);
 
-	function submit_lab() {
-		create_lab({
+	function reset_from() {
+		lab_name = '';
+		lab_detail = '';
+		file_input.value = '';
+		assets = [];
+		repo_url = '';
+		published = false;
+	}
+
+	async function submit_lab() {
+		await create_lab({
 			lab_name,
 			lab_detail,
 			assets: assets,
 			repo_url,
 			published
 		});
+		reset_from();
 	}
 
 	function handle_file_drop(e: DragEvent) {

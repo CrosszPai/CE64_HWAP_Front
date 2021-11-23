@@ -45,11 +45,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each hardwares as { id, status, working_id } (id)}
+			{#each hardwares as { id, status, working } (id)}
 				<tr>
 					<th>{id}</th>
 					<td>{status}</td>
-					<td>{working_id ?? "-"}</td>
+					<td>{working?.id ?? "-"}</td>
 				</tr>
 			{/each}
 		</tbody>

@@ -11,7 +11,6 @@ export const ADD_HARDWARE: TypedDocumentNode<{
     addHardware(hwid:$id){
         id
         status
-        working_id
     }
   }
 `

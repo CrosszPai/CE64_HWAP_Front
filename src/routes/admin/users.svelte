@@ -45,10 +45,12 @@
 		</thead>
 		<tbody>
 			{#each users as { id, name, email, role } (id)}
-				<th>{id}</th>
-				<td>{name}</td>
-				<td>{email}</td>
-				<td>{role}</td>
+				<tr>
+					<th>{id}</th>
+					<td>{name}</td>
+					<td>{email}</td>
+					<td>{role}</td>
+				</tr>
 			{/each}
 		</tbody>
 	</table>
