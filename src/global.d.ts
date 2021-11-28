@@ -34,7 +34,7 @@ export declare interface GithubUser {
 	updated_at: Date;
 }
 
-export declare interface lab {
+export declare interface Lab {
 	id: number;
 	lab_name: string;
 	lab_detail?: string;
@@ -68,7 +68,7 @@ export declare class Hardware {
 	id?: string;
 	createdAt?: string;
 	status?: string;
-	working?: Working;
+	queue?: Queue;
 }
 
 export declare class Working {
@@ -78,4 +78,13 @@ export declare class Working {
 	created_at?: string;
 	status?: string;
 	owner?: User;
+	queue?: Queue;
+}
+
+export declare class Queue {
+    id?: string;
+    created_at?: string;
+    updated_at?: string;
+    status?: string;
+    working?: Working;
 }

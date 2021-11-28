@@ -2,6 +2,31 @@
 	export const prerender = true;
 </script>
 
+<script lang="ts">
+	import { session } from '$app/stores';
+	import type { Role, User } from 'src/global';
+	$: user = $session.user as User | null;
+	let index_route = '/';
+	$: {
+		if (user) {
+			switch (user.role) {
+				case 'admin':
+					index_route = '/admin';
+					break;
+				case 'student':
+					index_route = '/student';
+					break;
+				case 'instructor':
+					index_route = '/instructor';
+					break;
+				default:
+					index_route = '/';
+					break;
+			}
+		}
+	}
+</script>
+
 <div class="hero h-[min-content] bg-base-200">
 	<div class="flex-col hero-content lg:flex-row-reverse">
 		<img alt="cover" src="/cover.webp" class="rounded-lg shadow-2xl" width="384" height="256" />
@@ -76,6 +101,12 @@
 		</div>
 	</div>
 </div>
+{#if user.role}
+	<div class="text-center">
+		<!-- a tag link to student or teacher page -->
+		<a class="btn btn-primary" href={index_route}>ไปหน้าหลัก</a>
+	</div>
+{/if}
 <svelte:head>
 	<meta name="description" content="Beryl Hardware Labolatory platform" />
 </svelte:head>

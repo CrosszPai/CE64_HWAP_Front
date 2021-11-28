@@ -7,7 +7,12 @@ export const HARDWARES: TypedDocumentNode<{ hardwares: Hardware[] }> = gql`
 		hardwares {
 			id
 			status
-			working
+			queue {
+				id
+				working {
+					id
+				}
+			}
 			created_at
 		}
 	}
