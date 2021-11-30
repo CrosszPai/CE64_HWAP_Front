@@ -1,6 +1,6 @@
-<script context="module">
+<!-- <script context="module">
 	export const prerender = true;
-</script>
+</script> -->
 
 <script lang="ts">
 	import { session } from '$app/stores';
