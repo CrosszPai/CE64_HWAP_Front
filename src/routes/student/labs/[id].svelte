@@ -2,7 +2,6 @@
 	import type { Load } from '@sveltejs/kit';
 	import type { Client } from '@urql/core';
 	import { LAB } from '$graphql/query/labs.gql';
-	import type { lab } from 'src/global';
 	export const load: Load<{
 		stuff: Client;
 	}> = async ({ stuff, page }) => {
@@ -24,10 +23,11 @@
 	import { goto } from '$app/navigation';
 	import { ADD_WORKING } from '$graphql/mutation/working.gql';
 	import { render as render_gh } from 'github-buttons';
+	import type { Lab } from 'src/global';
 
 	export let initialLab;
 	let repo: string = '';
-	let lab: lab = initialLab.data.lab;
+	let lab: Lab = initialLab.data.lab;
 
 	const addWorkingStore = operationStore(ADD_WORKING);
 	const addWorking = mutation(addWorkingStore);
@@ -35,6 +35,8 @@
 		addWorking({
 			lab: lab.id.toString(),
 			repo
+		}).then(() => {
+			goto('/student');
 		});
 	}
 

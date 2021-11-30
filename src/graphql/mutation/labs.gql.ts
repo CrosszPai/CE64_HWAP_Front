@@ -1,9 +1,9 @@
 import { gql } from '@urql/core';
 import type { TypedDocumentNode } from '@urql/core';
-import type { lab } from 'src/global';
+import type { Lab } from 'src/global';
 
 export const CREATE_LAB: TypedDocumentNode<
-	{ createLab: lab },
+	{ createLab: Lab },
 	{ lab_name: string; lab_detail?: string; assets: File[]; repo_url: string; published?: boolean }
 > = gql`
 	mutation createLab(

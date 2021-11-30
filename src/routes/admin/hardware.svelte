@@ -42,14 +42,16 @@
 				<th>ID</th>
 				<th>Status</th>
 				<th>Working Id</th>
+				<th>Queue Id</th>
 			</tr>
 		</thead>
 		<tbody>
-			{#each hardwares as { id, status, working } (id)}
+			{#each hardwares as { id, status, queue } (id)}
 				<tr>
 					<th>{id}</th>
 					<td>{status}</td>
-					<td>{working?.id ?? "-"}</td>
+					<td>{queue?.working?.id ?? "-"}</td>
+					<td>{queue?.id ?? "-"}</td>
 				</tr>
 			{/each}
 		</tbody>

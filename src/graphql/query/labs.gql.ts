@@ -1,9 +1,9 @@
 import { gql } from '@urql/core';
 import type { TypedDocumentNode } from '@urql/core';
-import type { lab } from 'src/global';
+import type { Lab } from 'src/global';
 
 export const SELF_LABS: TypedDocumentNode<{
-	selfLabs: lab[];
+	selfLabs: Lab[];
 }> = gql`
 	query selfLabs {
 		selfLabs {
@@ -18,7 +18,7 @@ export const SELF_LABS: TypedDocumentNode<{
 	}
 `;
 
-export const LAB: TypedDocumentNode<{ lab: lab }, { id: number }> = gql`
+export const LAB: TypedDocumentNode<{ lab: Lab }, { id: number }> = gql`
 	query lab($id: Float!) {
 		lab(id: $id) {
 			id
@@ -32,7 +32,7 @@ export const LAB: TypedDocumentNode<{ lab: lab }, { id: number }> = gql`
 	}
 `;
 
-export const LABS: TypedDocumentNode<{ publishedLab: lab[] }> = gql`
+export const LABS: TypedDocumentNode<{ publishedLab: Lab[] }> = gql`
 	query publishedLab {
 		publishedLab {
 			id
