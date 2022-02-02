@@ -5,6 +5,12 @@
 	query(labs);
 </script>
 
+<div class="text-right">
+	<!-- a tag href = '/instructor/create' -->
+	<a class="btn btn-primary" href="/instructor/create">
+		สร้างแล็ปใหม่
+	</a>
+</div>
 {#if $labs.fetching}
 	...loading
 {:else}
@@ -15,7 +21,9 @@
 					<h2 class="card-title">Lab {lab.id} : {lab.lab_name}</h2>
 					<h4 class="font-bold">Detail</h4>
 					<div>{lab.lab_detail}</div>
-					<p class="font-bold">Template Repository: <a class="link font-normal" href={lab.repo_url}>{lab.repo_url}</a></p>
+					<p class="font-bold">
+						Template Repository: <a class="link font-normal" href={lab.repo_url}>{lab.repo_url}</a>
+					</p>
 					<div class="card shadow-lg mt-5 mb-5">
 						<div class="card-body">
 							<div class="card-title">assets</div>

@@ -33,6 +33,7 @@
 				<a href="/"> HW Automation </a>
 				{#if user?.role === 'admin'}
 					<a href="/admin" class="mx-4 link hidden md:block">Admin</a>
+					<a href="/instructor/lab" class="mx-4 link hidden md:block">Instructor</a>
 				{/if}
 			</div>
 			{#if user?.id}
