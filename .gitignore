@@ -6,3 +6,13 @@ node_modules
 .env
 yarn-error.log
 yarn.lock
+
+node_modules
+
+/.cache
+/build
+/public/build
+
+.env
+
+/api/_build
