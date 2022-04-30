@@ -1,0 +1,30 @@
+@tailwind base;
+/* Write your global styles here, in PostCSS syntax */
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.menu.vertical {
+		display: inline-flex;
+		flex-direction: column;
+	}
+	.menu.vertical :where(li) {
+		flex-direction: column;
+	}
+	@screen md {
+		.menu.md\:vertical li.bordered > a,
+		.menu.md\:vertical li.bordered > span {
+			--tw-border-opacity: 1;
+			border-color: hsla(var(--p) / var(--tw-border-opacity, 1));
+			border-left-width: 4px;
+			border-bottom-width: 0;
+		}
+		.menu.md\:vertical li.bordered > a,
+		.menu.md\:vertical li.bordered > span {
+			--tw-border-opacity: 1;
+			border-color: hsla(var(--p) / var(--tw-border-opacity, 1));
+			border-left-width: 4px;
+			border-bottom-width: 0;
+		}
+	}
+}
