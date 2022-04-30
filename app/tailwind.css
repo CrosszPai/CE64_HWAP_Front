@@ -1350,8 +1350,6 @@ html {
   --tw-backdrop-sepia:  ;
 }
 
-/* Write your global styles here, in PostCSS syntax */
-
 .container {
   width: 100%;
 }
@@ -4253,25 +4251,6 @@ html {
   border-bottom-width: 4px;
 }
 
-.menu.vertical {
-  display: inline-flex;
-  flex-direction: column;
-}
-
-.menu.vertical :where(li) {
-  flex-direction: column;
-}
-
-@media (min-width: 768px) {
-  .menu.md\:vertical li.bordered > a,
-		.menu.md\:vertical li.bordered > span {
-    --tw-border-opacity: 1;
-    border-color: hsla(var(--p) / var(--tw-border-opacity, 1));
-    border-left-width: 4px;
-    border-bottom-width: 0;
-  }
-}
-
 .fixed {
   position: fixed;
 }
@@ -4856,15 +4835,6 @@ html {
 }
 
 @media (min-width: 768px) {
-  .menu.md\:vertical {
-    display: inline-flex;
-    flex-direction: column;
-  }
-
-  .menu.md\:vertical :where(li) {
-    flex-direction: column;
-  }
-
   .md\:mt-16 {
     margin-top: 4rem;
   }
