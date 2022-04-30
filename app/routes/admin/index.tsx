@@ -37,7 +37,7 @@ export const loader: LoaderFunction = async ({ request, context, params }) => {
   const session = await sessionStorage.getSession(
     request.headers.get("Cookie")
   );
-  if (!authData) {
+  if (authData?.user.role !== user_role_enum.admin) {
     return redirect("/");
   }
   const users = await db.user.findMany({
@@ -135,7 +135,7 @@ export default function Index() {
                         action={`/admin/user/${user.id}`}
                       >
                         <select
-                          defaultValue={user.role}
+                          defaultValue={user.role || ""}
                           name="role"
                           className="form-select select select-bordered"
                         >

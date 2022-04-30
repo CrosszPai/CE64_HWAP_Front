@@ -1,38 +1,18 @@
-import {
-	assets,
-	hardware_status_enum,
-	lab,
-	queue_status_enum,
-	user,
-	user_role_enum
-} from '@prisma/client';
+import { assets, lab, user, user_role_enum } from '@prisma/client';
 import classNames from 'classnames';
 import { useRef, useState } from 'react';
 import GitHubButton from 'react-github-btn';
-import {
-	ActionFunction,
-	json,
-	LoaderFunction,
-	redirect,
-	useActionData,
-	useLoaderData,
-	useSubmit
-} from 'remix';
+import { ActionFunction, json, LoaderFunction, redirect, useLoaderData, useSubmit } from 'remix';
 import { auth } from '~/auth.server';
 import Navbar from '~/components/shared/Navbar';
 import { db } from '~/utils/db.server';
-import { getRepos } from '~/utils/getRepos';
 import { shortenFileName } from '~/utils/shortenFileName';
-
-type ActionData = { message: string } | undefined;
 
 type LoaderData = {
 	user: user;
 	lab: lab & {
 		assets: assets[];
 	};
-	repos: Awaited<ReturnType<typeof getRepos>>;
-	disabled: boolean;
 };
 
 export const action: ActionFunction = async ({ request, context, params }) => {
@@ -41,48 +21,35 @@ export const action: ActionFunction = async ({ request, context, params }) => {
 		return redirect('/');
 	}
 	if (!params.id) {
-		return redirect('/student/lab');
+		return redirect('/instructor/lab');
 	}
 	const form = await request.formData();
 	const body = Object.assign({});
 	form.forEach(function (value, key) {
 		body[key] = value;
 	});
-	const lab = await db.lab.findFirst({
+	const lab = await db.lab.update({
 		where: {
 			id: +params.id
-		}
-	});
-	if (!lab) {
-		return json<ActionData>({ message: 'ไม่พบข้อมูลที่ต้องการ' });
-	}
-	const working = await db.working.create({
-		data: {
-			repo_url: body.repo_url,
-			labId: +lab.id,
-			ownerId: authData.user.id,
-			queue: {
-				create: {
-					status: queue_status_enum.waiting
-				}
-			}
 		},
-		include: {
-			queue: true
-		}
+		data: {
+            published: body.published === 'true'
+        }
 	});
-	return redirect('/student');
+	return json({ lab });
 };
 
 export const loader: LoaderFunction = async ({ request, context, params }) => {
 	const authData = await auth.isAuthenticated(request, {});
-	if (!authData) {
+	if (
+		authData?.user.role !== user_role_enum.instructor &&
+		authData?.user.role !== user_role_enum.admin
+	) {
 		return redirect('/');
 	}
 	if (!params.id) {
 		return redirect('/instructor/lab');
 	}
-	let disabled = false;
 	const lab = await db.lab.findFirst({
 		where: {
 			id: +params.id
@@ -94,32 +61,25 @@ export const loader: LoaderFunction = async ({ request, context, params }) => {
 	if (!lab) {
 		return redirect('/instructor/lab');
 	}
-	const working = await db.working.findFirst({
-		where: {
-			labId: +lab.id,
-			ownerId: authData.user.id
-		}
-	});
-	if (working) {
-		disabled = true;
-	}
-
-	const repos = await getRepos(authData.profile);
 	return json<LoaderData>({
 		user: authData.user,
-		lab,
-		repos,
-		disabled
+		lab
 	});
 };
 
 export default function Lab() {
-	const { lab, repos, disabled } = useLoaderData<LoaderData>();
-	const [repo, setRepo] = useState<string>('-1');
-	const action = useActionData<ActionData>();
+	const { lab } = useLoaderData<LoaderData>();
+	const [published, setPublished] = useState<boolean>(lab.published);
+	const submit = useSubmit();
+	const ref = useRef<HTMLFormElement>();
+	function onSubmit() {
+		if (confirm('ต้องการลบข้อมูลนี้ใช่หรือไม่?') && ref.current) {
+			submit(ref.current);
+		}
+	}
 	return (
 		<Navbar>
-			<a href="/student/lab" className="back-button">
+			<a href="/instructor/lab" className="back-button">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -171,38 +131,34 @@ export default function Lab() {
 					</div>
 				</div>
 			</div>
-			<div className="mt-8 text-right">
-				<a
-					className="underline text-red-500"
-					href="https://github.com/apps/HWAP-CE/installations/new"
-					target="_blank"
-				>
-					หากไม่พบ repo ใน github
-				</a>
-			</div>
-			<form method="POST" className="flex justify-end mt-10 mb-5">
-				<select
-					className="select select-bordered w-full max-w-xs"
-					onChange={(e) => {
-						setRepo(e.currentTarget.value);
-					}}
-					name="repo_url"
-					disabled={!!disabled}
-				>
-					<option disabled selected value="-1">
-						เลือก repo ที่ต้องการ link
-					</option>
-					{repos.map((repo) => (
-						<option key={repo.id} value={repo.html_url}>
-							{repo.name}
-						</option>
-					))}
-				</select>
-				<button type="submit" disabled={repo === '-1' || disabled} className="btn ml-2 btn-primary">
-					{disabled ? "เชื่อมแล็ปแล้ว" : "Link with lab."}
-				</button>
+			<form method="POST">
+				<div className="flex items-center justify-end">
+					<label htmlFor="publish" className="cursor-pointer label">
+						<span className="label-text ml-auto mr-2">{published ? 'Publish' : 'Draft'}</span>
+					</label>
+					<input
+						onChange={(e) => setPublished(e.target.checked)}
+						id="publish"
+						type="checkbox"
+						className="toggle toggle-accent"
+						name="published"
+                        value={published.toString()}
+                        checked={published}
+					/>
+				</div>
+				<div className="flex items-center justify-end">
+					<button
+						aria-label="submit-lab"
+						className={classNames('btn btn-primary mt-5', {
+							'!btn-outline': !published
+						})}
+						role="button"
+						aria-pressed="true"
+					>
+						Save
+					</button>
+				</div>
 			</form>
-			{action?.message && <div className="flex justify-end mt-10 mb-5">{action.message}</div>}
 		</Navbar>
 	);
 }

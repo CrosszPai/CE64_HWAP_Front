@@ -54,6 +54,26 @@ const Navbar: React.FC = (props) => {
                 </Link>
               </>
             )}
+            {user?.role === user_role_enum.instructor && (
+              <>
+                <Link
+                  to="/instructor/lab"
+                  className="mx-4 link hidden md:block"
+                >
+                  Instructor
+                </Link>
+              </>
+            )}
+            {user?.role === user_role_enum.student && (
+              <>
+                <Link
+                  to="/student"
+                  className="mx-4 link hidden md:block"
+                >
+                  Student
+                </Link>
+              </>
+            )}
           </div>
           <div className="flex-none hidden lg:block">
             {user && (
@@ -75,25 +95,6 @@ const Navbar: React.FC = (props) => {
                   tabIndex={0}
                   className="p-2 top-10 shadow menu dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <Link to="/profile">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      Profile
-                    </Link>
-                  </li>
                   <li>
                     <a>
                       <Form method="post" action="/auth/github/logout">
