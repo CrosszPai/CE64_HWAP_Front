@@ -1,21 +1,10 @@
-.DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
-.env
-yarn-error.log
-yarn.lock
-
 node_modules
 
-/.cache
-/build
-/public/build
-
+.cache
 .env
-
-/api/_build
-
-.k6
 .vercel
+.output
+
+/build/
+/public/build
+/api/index.js
