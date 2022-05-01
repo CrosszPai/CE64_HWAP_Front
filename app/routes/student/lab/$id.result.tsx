@@ -82,19 +82,27 @@ const Result: React.FC = () => {
 	const chart = useMemo(() => {
 		return Object.keys(groupedPin).map((pin) => {
 			const pinData = groupedPin[pin];
+			const isAnalog = pin === 'analog_pin';
+			const renderList = pinData.map((v) => ({
+				x: v['relative_timestamp'],
+				y: isAnalog ? v['value'] : v.capture === 'falling' ? 0 : 1
+			}));
+			const lastRenderList = pinData[renderList.length - 1];
+			const endEvent = data.result[data.result.length - 1];
+			renderList.push({
+				x: endEvent['relative_timestamp'],
+				y: isAnalog ? lastRenderList['value'] : lastRenderList['capture'] === 'falling' ? 0 : 1
+			});
 			return (
 				<div key={pin} className="my-4">
 					<Line
-						height={30}
+						height={isAnalog ? 50 : 30}
 						data={{
-							labels: [...new Set(data.result.map((v:any) => v['relative_timestamp']))],
+							labels: [...new Set(data.result.map((v: any) => v['relative_timestamp']))],
 							datasets: [
 								{
 									label: 'logic pin ' + pin,
-									data: pinData.map((v) => ({
-										x: v['relative_timestamp'],
-										y: v.capture === 'falling' ? 0 : 1
-									})),
+									data: renderList,
 									stepped: true,
 									fill: false,
 									borderColor: rand()
@@ -111,10 +119,12 @@ const Result: React.FC = () => {
 									display: true,
 									beginAtZero: true,
 									min: 0,
-									max: 1,
-									ticks: {
-										stepSize: 1
-									},
+									max: isAnalog ? undefined : 1,
+									ticks: isAnalog
+										? undefined
+										: {
+												stepSize: 1
+										  },
 									title: {
 										display: true,
 										text: 'level'
@@ -180,9 +190,13 @@ const Result: React.FC = () => {
 					<p>Note:</p>
 					<p>{data.queue?.notes}</p>
 				</div>
-				<div className="ml-auto">
-					<button className='btn btn-secondary' onClick={download}>download result</button>
-				</div>
+				{data.result && (
+					<div className="ml-auto">
+						<button className="btn btn-secondary" onClick={download}>
+							download result
+						</button>
+					</div>
+				)}
 			</div>
 			{chart}
 		</Navbar>

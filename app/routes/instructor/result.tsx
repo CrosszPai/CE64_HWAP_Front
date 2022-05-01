@@ -90,11 +90,11 @@ export default function result() {
 						>
 							<div className="card-body">
 								<div className="card-title flex">
-									<a href={`/student/lab/${queue.working?.lab.id}`} className="card-title">
+									<a href={`/instructor/lab/${queue.working?.lab.id}`} className="card-title">
 										{queue.working?.lab.lab_name}
 									</a>
 									<a
-										href={`/student/lab/${queue.working?.lab.id}/result`}
+										href={`/instructor/result/${queue.working?.lab.id}/`}
 										className={classNames('ml-auto', {
 											'text-success': queue.status === queue_status_enum.pass,
 											'text-warning':
