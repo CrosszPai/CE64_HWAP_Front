@@ -7,7 +7,7 @@ const AdminNavbar: React.FC = (props) => {
     <Navbar>
       <div className="flex-auto p-2 mx-auto container">
         <div className="grid gap-4 h-full grid-rows-[auto,1fr] md:grid-cols-[min-content,1fr]">
-          <ul className="menu place-self-center md:place-self-start mt-0 md:mt-16 w-[min-content] horizontal md:vertical h-[min-content] shadow-lg bg-base-100 rounded-box">
+          <ul className="menu place-self-center md:place-self-start mt-0 md:mt-16 w-[min-content] vertical h-[min-content] shadow-lg bg-base-100 rounded-box">
             <li className={location.pathname === "/admin" ? "bordered" : ""}>
               <Link to="/admin">
                 <svg
