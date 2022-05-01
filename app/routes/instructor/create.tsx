@@ -1,12 +1,12 @@
 import { user, user_role_enum } from '@prisma/client';
 import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
 	ActionFunction,
 	json,
 	LoaderFunction,
 	redirect,
-	unstable_createFileUploadHandler,
+	unstable_createMemoryUploadHandler,
 	unstable_parseMultipartFormData,
 	useLoaderData
 } from 'remix';
@@ -23,10 +23,8 @@ export const action: ActionFunction = async ({ request, context, params }) => {
 		return redirect('/');
 	}
 	console.log(__dirname);
-	const uploadHandler = unstable_createFileUploadHandler({
+	const uploadHandler = unstable_createMemoryUploadHandler({
 		maxFileSize: 10_000_000,
-		directory: __dirname + '/uploads/',
-		file: ({ filename }) => filename
 	});
 	const form = await unstable_parseMultipartFormData(request, uploadHandler);
 	const lab_name = form.get('lab_name')?.toString();
