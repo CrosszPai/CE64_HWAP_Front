@@ -37,7 +37,8 @@
     "react-github-btn": "^1.2.2",
     "remix": "^1.4.0",
     "remix-auth": "^3.2.1",
-    "remix-auth-github": "^1.1.0"
+    "remix-auth-github": "^1.1.0",
+    "sort-package-json": "1.55.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.4.0",
@@ -55,5 +56,10 @@
   "engines": {
     "node": ">=14"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "overrides": {
+    "@remix-run/dev": {
+      "sort-package-json": "1.55.0"
+    }
+  }
 }
