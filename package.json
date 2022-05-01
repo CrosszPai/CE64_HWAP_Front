@@ -2,7 +2,6 @@
   "private": true,
   "name": "remix-app-template",
   "description": "",
-  "type": "module",
   "license": "",
   "scripts": {
     "build": "npm run build:css && remix build",
