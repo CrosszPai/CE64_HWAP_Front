@@ -123,6 +123,7 @@ export const loader: LoaderFunction = async ({ request, context, params }) => {
 			repos: repo
 		});
 	} catch (error) {
+		console.log(error);
 		return redirect('https://github.com/apps/HWAP-CE/installations/new');
 	}
 };
