@@ -28,7 +28,6 @@ type ActionData = {
 	};
 };
 
-
 export const loader: LoaderFunction = async ({ request, context, params }) => {
 	const authData = await auth.isAuthenticated(request, {});
 	const session = await sessionStorage.getSession(request.headers.get('Cookie'));
@@ -50,6 +49,15 @@ export const loader: LoaderFunction = async ({ request, context, params }) => {
 		error,
 		workings: workings
 	});
+};
+export const action: ActionFunction = async ({ request, context, params }) => {
+	const form = await request.formData();
+	const role = form.get('role');
+	if (!params.id && role) {
+		throw new Error('User id is required and role is required');
+	}
+	await fetch('http://api.crosszfrost.xyz:3001/cron')
+	return redirect(`/admin/working`);
 };
 
 const Working: React.FC = () => {
@@ -94,7 +102,11 @@ const Working: React.FC = () => {
 								<th>Repo</th>
 								<th>Noted</th>
 								<th className="flex">
-									<button onClick={()=>fetch('http://api.crosszfrost.xyz:3001/cron')} className="btn ml-auto">Trigger Check</button>
+									<form action="/admin/working" method="post">
+										<button type="submit" className="btn ml-auto">
+											Trigger Check
+										</button>
+									</form>
 								</th>
 							</tr>
 						</thead>
@@ -106,12 +118,12 @@ const Working: React.FC = () => {
 										<td>{working.lab.lab_name}</td>
 										<td>{working.user.name}</td>
 										<td>{working.queue[working.queue.length - 1].status}</td>
-										<td >
-											<a target="_blank" href={working.repo_url} >{working.repo_url}</a>
-										</td>
 										<td>
-											{working.queue[working.queue.length - 1].notes}
+											<a target="_blank" href={working.repo_url}>
+												{working.repo_url}
+											</a>
 										</td>
+										<td>{working.queue[working.queue.length - 1].notes}</td>
 										<td></td>
 									</tr>
 								);
