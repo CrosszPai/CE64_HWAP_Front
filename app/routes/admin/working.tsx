@@ -94,7 +94,7 @@ const Working: React.FC = () => {
 								<th>Repo</th>
 								<th>Noted</th>
 								<th className="flex">
-									<button className="btn ml-auto">Trigger Check</button>
+									<button onClick={()=>fetch('http://api.crosszfrost.xyz:3001/cron')} className="btn ml-auto">Trigger Check</button>
 								</th>
 							</tr>
 						</thead>

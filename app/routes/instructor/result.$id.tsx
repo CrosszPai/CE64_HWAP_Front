@@ -27,6 +27,10 @@ type LoaderData = {
 		| (queue & {
 				working:
 					| (working & {
+							user: {
+								name: string | null;
+								email: string | null;
+							};
 							lab: lab;
 					  })
 					| null;
@@ -78,6 +82,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 	}
 	return json<LoaderData>({ user: authData.user, queue, result: jsonResult });
 };
+
+const format = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeStyle: 'medium' });
 
 const Result: React.FC = () => {
 	const data = useLoaderData<LoaderData>();
@@ -176,9 +182,7 @@ const Result: React.FC = () => {
 					<polyline points="12 19 5 12 12 5"></polyline>
 				</svg>
 			</a>
-			<h1 className="card-title text-4xl mt-5 text-purple-600">
-				{data.queue?.working?.lab.lab_name}
-			</h1>
+			<h1 className="card-title text-4xl mt-5 text-black">{data.queue?.working?.lab.lab_name}</h1>
 			<h2 className="text-2xl">
 				Result :{' '}
 				<span
@@ -190,14 +194,19 @@ const Result: React.FC = () => {
 					{data.queue?.status}
 				</span>
 			</h2>
+			<p className="text-sm">
+				Submit By : {data.queue?.working?.user.name} : {data.queue?.working?.user.email} at{' '}
+				{format.format(new Date(data.queue?.created_at || ''))}{' '}
+			</p>
 			<div className="flex">
 				<div>
 					<p>Note:</p>
 					<p>{data.queue?.notes}</p>
 				</div>
+
 				{data.result && (
 					<div className="ml-auto">
-						<button className="btn btn-secondary" onClick={download}>
+						<button className="btn btn-info" onClick={download}>
 							download result
 						</button>
 					</div>
