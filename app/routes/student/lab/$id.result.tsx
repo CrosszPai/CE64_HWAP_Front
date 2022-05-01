@@ -192,7 +192,7 @@ const Result: React.FC = () => {
 				</div>
 				{data.result && (
 					<div className="ml-auto">
-						<button className="btn btn-secondary" onClick={download}>
+						<button className="btn btn-info" onClick={download}>
 							download result
 						</button>
 					</div>
