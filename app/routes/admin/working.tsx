@@ -117,13 +117,13 @@ const Working: React.FC = () => {
 										<th>{working.id}</th>
 										<td>{working.lab.lab_name}</td>
 										<td>{working.user.name}</td>
-										<td>{working.queue[working.queue.length - 1].status}</td>
+										<td>{working.queue[working.queue.length - 1]?.status}</td>
 										<td>
 											<a target="_blank" href={working.repo_url}>
 												{working.repo_url}
 											</a>
 										</td>
-										<td>{working.queue[working.queue.length - 1].notes}</td>
+										<td>{working.queue[working.queue.length - 1]?.notes}</td>
 										<td></td>
 									</tr>
 								);
