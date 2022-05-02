@@ -94,7 +94,7 @@ const Result: React.FC = () => {
 		return Object.keys(groupedPin).map((pin) => {
 			const pinData = groupedPin[pin];
 			const isAnalog = pin === 'analog_pin';
-			const renderList = pinData.map((v) => ({
+			let renderList = pinData.map((v) => ({
 				x: v['relative_timestamp'],
 				y: isAnalog ? v['value'] : v.capture === 'falling' ? 0 : 1
 			}));
@@ -104,6 +104,9 @@ const Result: React.FC = () => {
 				x: endEvent['relative_timestamp'],
 				y: isAnalog ? lastRenderList['value'] : lastRenderList['capture'] === 'falling' ? 0 : 1
 			});
+			if(pinData[0]['relative_timestamp'] !== 0){
+				renderList = [{x: 0, y: 0}, ...renderList];
+			}
 			return (
 				<div key={pin} className="my-4">
 					<Line
