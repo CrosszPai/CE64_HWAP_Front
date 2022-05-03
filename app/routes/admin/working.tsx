@@ -56,7 +56,7 @@ export const action: ActionFunction = async ({ request, context, params }) => {
 	if (!params.id && role) {
 		throw new Error('User id is required and role is required');
 	}
-	await fetch('http://api.crosszfrost.xyz:3001/cron')
+	await fetch(process.env.API_SERVER_URL+'/cron')
 	return redirect(`/admin/working`);
 };
 
